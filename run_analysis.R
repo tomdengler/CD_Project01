@@ -14,6 +14,9 @@
 run <- function()
 {
   # read in the data files and load any required libraries
+  
+  # for testing, I had set up "small" versions of the files with only 1000 rows each
+  # for the final assignment, setting to false reads the entire file
   readSmall<-FALSE # TRUE
   
   require(plyr)
@@ -23,6 +26,7 @@ run <- function()
   alldata<-rbind(test,train)
   colnames(alldata)<-prettyNames(colnames(alldata))
   tidy<-ddply(alldata,c("subject","activity"), numcolwise(mean))
+  write.table(tidy,"tidy.txt",row.names=FALSE)
 }
 
 readDataType<-function(type,readSmall)
@@ -67,9 +71,9 @@ readDataFile<-function(type,XorY,small)
 prettyNames <- function(uglyNames)
 {
   # Make the variable names in the dataset nicer to use
-  # remove the leading "t"
-  # remove the "()"
-  # change "-" to "_"
+  #   remove the leading "t"
+  #   remove the "()"
+  #   change "-" to "_"
   p<-uglyNames
   p<-sub("()","",p,fixed=TRUE)
   p<-gsub("-","_",p,fixed=TRUE)
