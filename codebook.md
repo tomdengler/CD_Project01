@@ -2,8 +2,9 @@
 
 
 ###Summary
-Project 2's assignment was summarize a set of wearable computing data points by 30 `subjects` each performing 6 `activitys`.  The originating data was a zip file with a subfolder structure separating similar "test" and "train" data sets.
-Each subfolder contained files indexed by other files.  The project task was to simplify this data into a single self-contained "tidy" data set.
+Project 1's assignment was to summarize a set data points by 30 `subjects` each performing 6 `activitys`.  The originating raw data was from a zip file with a subfolder structure separating similar "test" and "train" data sets.  Each subfolder contained files indexed by other files.  The project task was to simplify this data into a single self-contained "tidy" data set.
+
+The data was collected from sesnory data from smart phones and is considered to be representative of data from "wearable computing". 
 
 ###Data structure
 The resulting tidy data has the following 68 columns:
@@ -21,7 +22,11 @@ The resulting tidy data has the following 68 columns:
 
 
 ###Variable name mapping
-The original data set contained data points for 561 variables which were either time based data or filtered data, prefixed by "t" and "f" respectively.  These variables were filtered to only include the 66 variable names for mean() and std().  The variable names were then simplified to remove "-" and "()".  The data for these variables was then summarized by subject and activity and subsequently averaged by subject and activity.  The resulting mapping of original variable names to averaged variable names is as follows:
+The original data set contained data points for 561 variables which were either time based data or filtered data, prefixed by "t" and "f" respectively.  The data files themselves did not include column names, the column names were available from the features.txt file.  These variables were filtered to include only the 66 variable names for mean() and std().  The variable names were then simplified to remove "-" and "()".  The data for these variables was then summarized by subject and activity and subsequently averaged by subject and activity.  The resulting mapping of original variable names to averaged variable names is as listed in the table below.
+
+**Week 4 lecture notes:** - Week 4 of the course details how variable names should be simplified in typical R applications.  According to the lecture, they should not contain underscores and they should not contain mixed case.  While this is totally counter to what I have been taught elsewhere (I have been programming for over 40 years),  I would have implemented this in the function `prettyNames()`.  As it stands, my current implementation uses Camel case and underscores for column names.
+
+
 
 |Original                    | Simplified                     |
 |:---------------------------|:-------------------------------|
